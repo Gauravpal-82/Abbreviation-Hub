@@ -1,90 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abbreviations Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
-  </head>
-  <body class="bg-gradient-to-br from-indigo-900 to-purple-900 min-h-screen text-white font-sans">
-    <div class="max-w-4xl mx-auto p-6">
-      <header class="flex flex-col items-center text-center space-y-4">
-        <lord-icon
-          src="https://cdn.lordicon.com/lupuorrc.json"
-          trigger="loop"
-          delay="500"
-          style="width:100px;height:100px">
-        </lord-icon>
-        <h1 class="text-4xl font-bold">Abbreviations Hub</h1>
-        <p class="text-gray-300">Find full forms of common short forms and acronyms</p>
-        <input
-          id="search"
-          type="text"
-          placeholder="Search abbreviations..."
-          class="w-full md:w-1/2 px-4 py-2 mt-4 text-black rounded-lg shadow-md"
-        />
-      </header>
-
-      <main id="abbreviations" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"></main>
-    </div>
-
-    <!-- LORDICON Script -->
-    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-
-    <script>
-      const data = [
-        { abbr: "CPU", full: "Central Processing Unit" },
-        { abbr: "HTML", full: "HyperText Markup Language" },
-        { abbr: "HTTP", full: "HyperText Transfer Protocol" },
-        { abbr: "AI", full: "Artificial Intelligence" },
-        { abbr: "URL", full: "Uniform Resource Locator" },
-        { abbr: "IP", full: "Internet Protocol" },
-        { abbr: "USB", full: "Universal Serial Bus" },
-        { abbr: "PDF", full: "Portable Document Format" },
-        { abbr: "RAM", full: "Random Access Memory" },
-        { abbr: "GPU", full: "Graphics Processing Unit" },
-      ];
-
-      const container = document.getElementById("abbreviations");
-      const searchInput = document.getElementById("search");
-
-      const renderAbbreviations = (filteredData) => {
-        container.innerHTML = "";
-        filteredData.forEach(({ abbr, full }, i) => {
-          const div = document.createElement("div");
-          div.className =
-            "bg-white bg-opacity-10 backdrop-blur-sm p-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-300";
-          div.innerHTML = `
-            <h2 class="text-xl font-semibold">${abbr}</h2>
-            <p class="text-sm text-gray-300">${full}</p>
-          `;
-
-          // Animate on appear
-          div.style.opacity = 0;
-          div.style.transform = "translateY(20px)";
-          setTimeout(() => {
-            div.style.transition = "all 0.5s ease";
-            div.style.opacity = 1;
-            div.style.transform = "translateY(0)";
-          }, 100 * i);
-
-          container.appendChild(div);
-        });
-      };
-
-      searchInput.addEventListener("input", (e) => {
-        const keyword = e.target.value.toLowerCase();
-        const filtered = data.filter(
-          ({ abbr, full }) =>
-            abbr.toLowerCase().includes(keyword) ||
-            full.toLowerCase().includes(keyword)
-        );
-        renderAbbreviations(filtered);
-      });
-
-      // Initial render
-      renderAbbreviations(data);
-    </script>
-  </body>
-</html>
+const data = [
+  { abbr: "API", full: "Application Programming Interface" },
+  { abbr: "SQL", full: "Structured Query Language" },
+  { abbr: "CSS", full: "Cascading Style Sheets" },
+  { abbr: "DNS", full: "Domain Name System" },
+  { abbr: "FTP", full: "File Transfer Protocol" },
+  { abbr: "SSH", full: "Secure Shell" },
+  { abbr: "IDE", full: "Integrated Development Environment" },
+  { abbr: "LAN", full: "Local Area Network" },
+  { abbr: "WAN", full: "Wide Area Network" },
+  { abbr: "BIOS", full: "Basic Input Output System" },
+  { abbr: "CAD", full: "Computer-Aided Design" },
+  { abbr: "CEO", full: "Chief Executive Officer" },
+  { abbr: "CFO", full: "Chief Financial Officer" },
+  { abbr: "CMOS", full: "Complementary Metal-Oxide Semiconductor" },
+  { abbr: "DBMS", full: "Database Management System" },
+  { abbr: "DOS", full: "Disk Operating System" },
+  { abbr: "ERP", full: "Enterprise Resource Planning" },
+  { abbr: "GIF", full: "Graphics Interchange Format" },
+  { abbr: "GUI", full: "Graphical User Interface" },
+  { abbr: "HTTPs", full: "Hypertext Transfer Protocol Secure" },
+  { abbr: "ISP", full: "Internet Service Provider" },
+  { abbr: "JSON", full: "JavaScript Object Notation" },
+  { abbr: "LCD", full: "Liquid Crystal Display" },
+  { abbr: "LED", full: "Light Emitting Diode" },
+  { abbr: "MAC", full: "Media Access Control" },
+  { abbr: "MIPS", full: "Million Instructions Per Second" },
+  { abbr: "MPEG", full: "Moving Picture Experts Group" },
+  { abbr: "OCR", full: "Optical Character Recognition" },
+  { abbr: "OEM", full: "Original Equipment Manufacturer" },
+  { abbr: "OS", full: "Operating System" },
+  { abbr: "PHP", full: "Hypertext Preprocessor" },
+  { abbr: "PNG", full: "Portable Network Graphics" },
+  { abbr: "QR", full: "Quick Response" },
+  { abbr: "RAID", full: "Redundant Array of Independent Disks" },
+  { abbr: "RDP", full: "Remote Desktop Protocol" },
+  { abbr: "ROM", full: "Read-Only Memory" },
+  { abbr: "SEO", full: "Search Engine Optimization" },
+  { abbr: "SMTP", full: "Simple Mail Transfer Protocol" },
+  { abbr: "SNMP", full: "Simple Network Management Protocol" },
+  { abbr: "SSD", full: "Solid State Drive" },
+  { abbr: "SVG", full: "Scalable Vector Graphics" },
+  { abbr: "TCP", full: "Transmission Control Protocol" },
+  { abbr: "UDP", full: "User Datagram Protocol" },
+  { abbr: "UI", full: "User Interface" },
+  { abbr: "UX", full: "User Experience" },
+  { abbr: "UUID", full: "Universally Unique Identifier" },
+  { abbr: "VPN", full: "Virtual Private Network" },
+  { abbr: "VR", full: "Virtual Reality" },
+  { abbr: "WIFI", full: "Wireless Fidelity" },
+  { abbr: "WWW", full: "World Wide Web" },
+  { abbr: "XML", full: "eXtensible Markup Language" },
+  { abbr: "ZIP", full: "Zone Improvement Plan" },
+  { abbr: "TYZ", full: "TYZ Full Form Example" },
+  { abbr: "RGK", full: "RGK Full Form Example" },
+  { abbr: "KNM", full: "KNM Full Form Example" },
+  { abbr: "ALZ", full: "ALZ Full Form Example" },
+  { abbr: "PV", full: "PV Full Form Example" },
+  { abbr: "FEL", full: "FEL Full Form Example" },
+  { abbr: "GZL", full: "GZL Full Form Example" },
+  { abbr: "BNP", full: "BNP Full Form Example" },
+  { abbr: "UPQ", full: "UPQ Full Form Example" },
+  { abbr: "YX", full: "YX Full Form Example" },
+  { abbr: "WTR", full: "WTR Full Form Example" },
+  { abbr: "MR", full: "MR Full Form Example" },
+  { abbr: "HPD", full: "HPD Full Form Example" },
+  { abbr: "VAK", full: "VAK Full Form Example" },
+  { abbr: "LQF", full: "LQF Full Form Example" },
+  { abbr: "NJZ", full: "NJZ Full Form Example" },
+  { abbr: "FEO", full: "FEO Full Form Example" },
+  { abbr: "QUX", full: "QUX Full Form Example" },
+  { abbr: "MND", full: "MND Full Form Example" },
+  { abbr: "YTP", full: "YTP Full Form Example" },
+  { abbr: "UBK", full: "UBK Full Form Example" },
+  { abbr: "CT", full: "CT Full Form Example" },
+  { abbr: "JVR", full: "JVR Full Form Example" },
+  { abbr: "NBF", full: "NBF Full Form Example" },
+  { abbr: "SKZ", full: "SKZ Full Form Example" },
+  { abbr: "XID", full: "XID Full Form Example" },
+  { abbr: "WBQ", full: "WBQ Full Form Example" },
+  { abbr: "ZUM", full: "ZUM Full Form Example" },
+  { abbr: "PKR", full: "PKR Full Form Example" },
+  { abbr: "YAG", full: "YAG Full Form Example" },
+  { abbr: "JTX", full: "JTX Full Form Example" },
+  { abbr: "LVM", full: "LVM Full Form Example" },
+  { abbr: "XBO", full: "XBO Full Form Example" },
+  { abbr: "CVH", full: "CVH Full Form Example" },
+  { abbr: "DUN", full: "DUN Full Form Example" },
+  { abbr: "RKS", full: "RKS Full Form Example" },
+  { abbr: "ETP", full: "ETP Full Form Example" },
+  { abbr: "AKU", full: "AKU Full Form Example" },
+  { abbr: "VWB", full: "VWB Full Form Example" },
+  { abbr: "HZJ", full: "HZJ Full Form Example" },
+  { abbr: "OEI", full: "OEI Full Form Example" },
+  { abbr: "KXN", full: "KXN Full Form Example" },
+  { abbr: "BJL", full: "BJL Full Form Example" },
+  { abbr: "TGV", full: "TGV Full Form Example" },
+  { abbr: "ZRF", full: "ZRF Full Form Example" }
+];

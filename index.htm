@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abbreviations Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  </head>
+  <body class="bg-gradient-to-br from-indigo-900 to-purple-900 min-h-screen text-white font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+      <header class="flex flex-col items-center text-center space-y-4">
+        <lord-icon
+          src="https://cdn.lordicon.com/lupuorrc.json"
+          trigger="loop"
+          delay="500"
+          style="width:100px;height:100px">
+        </lord-icon>
+        <h1 class="text-4xl font-bold">Abbreviations Hub</h1>
+        <p class="text-gray-300">Find full forms of common short forms and acronyms</p>
+        <input
+          id="search"
+          type="text"
+          placeholder="Search abbreviations..."
+          class="w-full md:w-1/2 px-4 py-2 mt-4 text-black rounded-lg shadow-md"
+        />
+      </header>
+
+      <main id="abbreviations" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6"></main>
+    </div>
+
+    <!-- LORDICON Script -->
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+
+    <script>
+      const data = [
+        { abbr: "CPU", full: "Central Processing Unit" },
+        { abbr: "HTML", full: "HyperText Markup Language" },
+        { abbr: "HTTP", full: "HyperText Transfer Protocol" },
+        { abbr: "AI", full: "Artificial Intelligence" },
+        { abbr: "URL", full: "Uniform Resource Locator" },
+        { abbr: "IP", full: "Internet Protocol" },
+        { abbr: "USB", full: "Universal Serial Bus" },
+        { abbr: "PDF", full: "Portable Document Format" },
+        { abbr: "RAM", full: "Random Access Memory" },
+        { abbr: "GPU", full: "Graphics Processing Unit" },
+      ];
+
+      const container = document.getElementById("abbreviations");
+      const searchInput = document.getElementById("search");
+
+      const renderAbbreviations = (filteredData) => {
+        container.innerHTML = "";
+        filteredData.forEach(({ abbr, full }, i) => {
+          const div = document.createElement("div");
+          div.className =
+            "bg-white bg-opacity-10 backdrop-blur-sm p-4 rounded-xl shadow-lg transform hover:scale-105 transition duration-300";
+          div.innerHTML = `
+            <h2 class="text-xl font-semibold">${abbr}</h2>
+            <p class="text-sm text-gray-300">${full}</p>
+          `;
+
+          // Animate on appear
+          div.style.opacity = 0;
+          div.style.transform = "translateY(20px)";
+          setTimeout(() => {
+            div.style.transition = "all 0.5s ease";
+            div.style.opacity = 1;
+            div.style.transform = "translateY(0)";
+          }, 100 * i);
+
+          container.appendChild(div);
+        });
+      };
+
+      searchInput.addEventListener("input", (e) => {
+        const keyword = e.target.value.toLowerCase();
+        const filtered = data.filter(
+          ({ abbr, full }) =>
+            abbr.toLowerCase().includes(keyword) ||
+            full.toLowerCase().includes(keyword)
+        );
+        renderAbbreviations(filtered);
+      });
+
+      // Initial render
+      renderAbbreviations(data);
+    </script>
+  </body>
+</html>
